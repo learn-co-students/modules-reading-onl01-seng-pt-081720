@@ -1,19 +1,15 @@
-describe 'Dance module' do
-  let(:dummy_class) { Class.new { include Dance }.new }
+describe 'Dancer' do
+  let(:dancer) {Dancer.new('Anna')}
 
-  it 'has a #twirl method' do
-    expect(dummy_class.twirl).to eq("I'm twirling!")
+  it 'includes the Dance module' do
+    expect(dancer).to have_instance_dance_methods
   end
 
-  it 'has a #jump method' do
-    expect(dummy_class.jump).to eq("Look how high I'm jumping!")
+  it 'has a name' do
+    expect(dancer.name).to eq('Anna')
   end
 
-  it 'has a #pirouette method' do
-    expect(dummy_class.pirouette).to eq("I'm doing a pirouette")
-  end
-
-  it 'has a #take_a_bow method' do
-    expect(dummy_class.take_a_bow).to eq("Thank you, thank you. It was a pleasure to dance for you all.")
+  it 'extends the MetaDancing module' do
+    expect(Dancer).to have_class_dance_methods
   end
 end
